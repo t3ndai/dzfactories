@@ -1,23 +1,56 @@
+const sql = require('./sql')
 
-export default class Factory {
+//@index 
+const index = async() => {
+	//return all factories
+	try {
 
-	//@index 
-	index = () => {
-		//return all factories
+		return response = await sql.getAll()
+
+	}catch(err) {
+		console.log(err)
+	}
+}
+
+//@create
+const create = async (factory) => {
+	//save factory
+	try {
+
+		return response = await sql.saveFactory(factory)
+
+	}catch(err) {
+
+		console.log(err)
+
 	}
 
-	//@create
-	create = () => {
-		//save factory
-	}
+}
 
-	//update 
-	update = () => {
-		//update factory
-	}
+//@update 
+const update = async(factory) => {
+	//update factory || update children generated
+   	try {
+		return response = await sql.update(factory)
+   	}catch(err) {
+   		console.log(err)
+   	}
 
-	delete = () => {
-		//delete factory
-	}
+}
 
+//@delete
+const remove = async(factory) => {
+	//delete factory
+	try {
+		return response = await sql.remove(factory)
+	}catch(err) {
+		console.log(err)
+	}
+}
+
+module.exports = {
+	'index' : index,
+	'create' : create,
+	'update' : update,
+	'remove' : remove,
 }
