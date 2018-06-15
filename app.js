@@ -34,10 +34,6 @@ app.get('/', (req,res, next) => {
 
 io.on('connection', (socket) => {
 	console.log('user connected')
-	/*socket.on('factories', (data) => {
-		console.log(data)
-		socket.broadcast.emit('new_factories', data)
-	})*/
 
 })
 
@@ -142,4 +138,5 @@ app.route('/factories')
    })
 
 
-http.listen(3000,() => console.log('listening on:3000'))
+const port = process.env.PORT
+http.listen(port,() => console.log(`listening on:${port}`))
